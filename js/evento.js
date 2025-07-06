@@ -23,31 +23,30 @@ function mostrarMensaje() {
   console.log("Botón presionado: mostrando mensaje oculto.");
   document.getElementById("mensajeOculto").style.display = "block";
 }
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     const audio = document.getElementById("audioFondo");
+    const intento = audio.play();
   
-    // Intentar reproducir directamente
-    const playPromise = audio.play();
-  
-    if (playPromise !== undefined) {
-      playPromise
+    if (intento !== undefined) {
+      intento
         .then(() => {
-          console.log("🎵 Audio reproducido automáticamente.");
+          console.log(" Audio reproducido");
         })
-        .catch((error) => {
-          console.warn("⚠️ El navegador bloqueó el autoplay. Esperando interacción del usuario.");
+        .catch((err) => {
+          console.warn("Audio bloqueado. Esperando interacción del usuario...");
   
-          // Esperar a que el usuario haga clic en cualquier parte
-          const activarAudio = () => {
-            audio.play().then(() => {
-              console.log("🎵 Audio iniciado tras interacción.");
-              document.removeEventListener("click", activarAudio);
-            }).catch(err => {
-              console.error("❌ Error al reproducir el audio tras interacción:", err);
-            });
+          const habilitar = () => {
+            audio.play()
+              .then(() => {
+                console.log("Audio reproducido tras clic.");
+                document.removeEventListener("click", habilitar);
+              })
+              .catch(error => {
+                console.error("Error al intentar reproducir:", error);
+              });
           };
   
-          document.addEventListener("click", activarAudio);
+          document.addEventListener("click", habilitar);
         });
     }
   });
