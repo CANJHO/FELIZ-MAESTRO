@@ -1,0 +1,89 @@
+/* Reset general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #ffe3e3, #fce4ec);
+}
+
+/* Título y texto */
+.typed-container {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #d63384;
+    margin-top: 2rem;
+}
+
+.lead {
+    font-size: 1.1rem;
+    padding: 0 2rem;
+}
+
+/* Carrusel */
+.carrusel {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    /* Firefox */
+    background-color: #ffe3e3;
+}
+
+.carrusel::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
+}
+
+.carrusel img {
+    flex: 0 0 100%;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    scroll-snap-align: start;
+}
+
+/* Botón y mensaje */
+#mensajeOculto {
+    font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h1.display-4 {
+        font-size: 2rem;
+    }
+
+    .typed-container {
+        font-size: 1.2rem;
+    }
+
+    .lead {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .typed-container {
+        font-size: 1rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+
+    #mensajeOculto {
+        font-size: 0.95rem;
+    }
+}
